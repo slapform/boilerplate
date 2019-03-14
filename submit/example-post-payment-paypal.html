@@ -1,0 +1,60 @@
+---
+layout: null
+permalink: /example-post-payment-paypal/
+title:
+description:
+sitemap:
+  priority: 0.1
+  exclude: true
+pageVarTest: "test {{asd}}"
+---
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+  <h3>Sample Form Template</h3>
+  <br>
+
+  <form id="payment-form" accept-charset="UTF-8" action='http://localhost:5001/slapform/us-central1/submissionProcessHTTPS/ian.wiedenman@gmail.com?slap_debug=false' method="POST" target="_blank" class="container">
+
+    <!-- type="email" a field for editing an e-mail address. -->
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" value="john@example.com"><br><br>
+
+    <fieldset>
+      <legend>Payment</legend>
+      <!-- <label><input type="radio" id="stripe" value="stripe" name="slap_payment_processor" checked>Credit/Debit Card (Stripe)</label> -->
+      <label><input type="radio" id="paypal" value="paypal" name="slap_payment_processor" checked>PayPal</label>
+      <!-- <label><input type="radio" id="none" value="none" name="saluation" checked>None</label> -->
+    </fieldset><br>
+
+    <label for="number">Payment Price</label>
+    <input type="text" id="price" name="slap_payment_amount" value="14.95"><br><br>
+
+    <label for="number">Payment Type</label>
+    <input type="text" id="type" name="slap_payment_type" value="charge"><br><br>
+
+    <label for="number">Payment Currency</label>
+    <input type="text" id="currency" name="slap_payment_currency" value="usd"><br><br>
+
+    <label for="number">slap_payment_environment</label>
+    <input type="text" id="currency" name="slap_payment_environment" value="sandbox"><br><br>
+
+    <label for="number">slap_payment_customer_email</label>
+    <input type="text" id="currency" name="slap_payment_customer_email" value="email"><br><br>
+
+    <label for="name">slap_webhook</label>
+    <input type="text" id="webhook" name="slap_webhook" value="https://hooks.zapier.com/hooks/catch/230940/xq1d6r/"><br><br>
+
+
+
+    <button type="submit">Submit</button>
+    <button type="reset">Clear Values</button>
+  </form>
+
+
+</body>
+
+</html>

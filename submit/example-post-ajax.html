@@ -1,0 +1,82 @@
+---
+layout: null
+permalink: /example-post-ajax/
+title:
+description:
+sitemap:
+  priority: 0.1
+  exclude: true
+pageVarTest: "test {{asd}}"
+---
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+  <h3>Sample Form Template | Ajax</h3>
+  <br>
+
+
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      $.ajax({
+          // url: 'http://localhost:5001/slapform/us-central1/submissionProcessHTTPS',
+          // url: 'http://localhost:5000/ian.wiedenman@gmail.com',
+          // url: 'http://localhost:5000/itw.creative.works@gmail.com',
+          url: 'http://localhost:5000/ian.wiedenman@gmail.com',
+          // url: 'http://localhost:5000/9LjF3TDGGNgY9JFGJ2RVIHiio1x2',
+          dataType: "json",
+          type: 'POST',
+          data: {
+            slap_debug: true,
+            slap_webhook: "https://hooks.zapier.com/hooks/catch/230940/xq1d6r/",
+            // slap_email: "ian.wiedenman@gmail.com",
+            // slap_email: "ian.wiedenman+999@gm/a\il.com",
+            slap_replyto: "spartanxpure@gmail.com",
+            slap_redirect: "https://facebook.com",
+            name: "Ian Wiedenman"
+          },
+          success: function (data) {
+              console.log("Got data", data);
+          },
+          error: function (xhr, status, error) {
+              console.log('Error: ' + JSON.stringify(error));
+              console.log('status: ' + JSON.stringify(status));
+          },
+      });
+    });
+
+
+    if (false) {
+      $.ajax({
+          url: "https://formspree.io/FORM_ID",
+          method: "POST",
+          data: {message: "hello!"},
+          dataType: "json"
+      });
+      $.ajax({
+          url: 'https://us-central1-ecc-local.cloudfunctions.net/getAjax',
+          dataType: "json",
+          type: 'POST',
+          data: {startdate: 1505941200, enddate: 1506373200},
+          success: function (data) {
+              console.log("Got data", data);
+          },
+          error: function (xhr, status, error) {
+              console.log('Error: ' + JSON.stringify(error));
+              console.log('status: ' + JSON.stringify(status));
+          },
+      });
+    }
+
+  </script>
+
+</body>
+
+</html>

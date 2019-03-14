@@ -1,0 +1,230 @@
+---
+layout: null
+permalink: /example-post-complex-noemail/
+title:
+description:
+sitemap:
+  priority: 0.1
+  exclude: true
+pageVarTest: "test {{asd}}"
+---
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+  <h3>Sample Form Template</h3>
+  <br>
+
+  <!-- <form accept-charset="UTF-8" action="{{site.form-location}}?slap_email=ian.wiedenman@gmail.com&aaatest=QUERY&slap_redirect=https://facebook.com&slap_debug=true" method="POST" target="_blank" class="container"> -->
+  <!-- <form accept-charset="UTF-8" action="https://slapform.firebaseapp.com/submissionProcessHTTPS?slap_email=ian.wiedenman@gmail.com&aaatest=QUERY&slap_redirect=https://facebook.com&slap_notes=asdasd" method="POST" target="_blank" class="container"> -->
+  <!-- <form accept-charset="UTF-8" action="{{site.form-location}}?slap_email=ian.wiedenman@gmail.com&aaatest=QUERY&slap_redirect=https://facebook.com&slap_notes=asdasd" method="POST" target="_blank" class="container"> -->
+  <!-- <form accept-charset="UTF-8" action="https://api.slapform.com?slap_email=ian.wiedenman@gmail.com&aaatest=QUERY&slap_redirect=https://facebook.com&slap_notes=asdasd" method="POST" target="_blank" class="container"> -->
+
+  <!-- <form accept-charset="UTF-8" action="https://api.slapform.com?slap_email=ian.wiedenman@gmail.com" method="POST" target="_blank" class="container"> -->
+  <form accept-charset="UTF-8" action="http://localhost:5001/slapform/us-central1/submissionProcessHTTPS?slap_debug=true" method="POST" target="_blank" class="container">
+  <!-- <form accept-charset="UTF-8" action="http://localhost:5000/ian.wiedenman@gmail.com" method="POST" target="_blank" class="container"> -->
+
+    <!-- For detailed information check out these two sites
+         https://www.w3schools.com/tags/att_input_type.asp
+         https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types
+    -->
+
+    <!-- type="text" A single-line text field. Line-breaks are automatically removed from the input value.
+         placeholder="Your name..." is a great way to hint to the customer what kind of
+         value you're expecting in the field and will not be submitted when they submit the form.
+    -->
+    <div class="">
+      TEST
+      <br>
+      {{page.pageVarTest}}
+    </div>
+    <label for="name">aaatest</label>
+    <input type="text" id="aaatest" name="aaatest" value="FIELD"><br><br>
+
+    <div class="">
+      https://hooks.zapier.com/hooks/catch/230940/xq1d6r/
+    </div>
+    <label for="name">slap_webhook</label>
+    <input type="text" id="webhook" name="slap_webhook" value=""><br><br>
+
+    <label for="name">slap_debug</label>
+    <input type="text" id="webhook" name="slap_debug" value=""><br><br>
+
+    <label for="name">Honey Pot</label>
+    <input type="text" id="honey" name="slap_honey" value=""><br><br>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="John Smith"><br><br>
+
+    <!-- type="email" a field for editing an e-mail address. -->
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" value="john@example.com"><br><br>
+
+    <!-- type="tel" on mobile devices will bring up a phone keyboard -->
+    <label for="tel">Phone Number</label>
+    <input type="tel" id="tel" name="tel" value="555-123-4567"><br><br>
+
+    <!-- textarea is a multi-line plain-text editing control, useful when you want to
+         allow users to enter a sizeable amount of free-form text.
+     -->
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" value="Reason for contacting us" rows="5"></textarea><br><br>
+
+    <!--
+         By supplying a hidden "no" value with the same name as the checkbox, we will
+         always get a "no" or "yes" value. Without that the subscribe value will not
+         be sent if the field is unchecked.
+    -->
+    <input type="hidden" name="subscribe" value="no">
+    <label for="checkbox"><input type="checkbox" id="checkbox" name="subscribe" value="yes" checked>Subscribe to our newsletter
+    </label><br><br>
+
+    <!-- force older browsers to submit your form data as UTF8. It helps ensure all submissions to your form will be encoded the same way.
+         See
+    -->
+    <input type="hidden" name="utf8" value="✓">
+
+    <!-- There are certain names for common fields that browers will treat specially
+        and autofill values for the user automatically. If you can use these names for
+        your fields you should. See the url below for more detailed information about them
+        https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
+          "name"
+          "organization-title"
+          "organization"
+          "street-address"
+          "address-line1"
+          "address-line2"
+          "address-line3"
+          "address-level4"
+          "address-level3"
+          "address-level2"
+          "address-level1"
+          "country"
+          "country-name"
+          "email"
+          "postal-code"
+          "language"
+          "bday"
+          "bday-day"
+          "bday-month"
+          "bday-year"
+          "sex"
+          "tel"
+          "tel-extension"
+          "url"
+    -->
+
+    <br><br><br><hr><br>
+    <b><i>See information below for additional HTML elements you can cut and paste and incorporate into your form.</i></b>
+
+
+    <h3>Extra Form Elements You Can Cut and Paste and Use</h3>
+
+
+      <!-- type="radio" A radio button, allowing a single value to be selected out of multiple choices.
+           give them all the same "name" to indicate which ones go together. You can use the 'checked'
+           attribute to default a value when the form is loaded.
+      -->
+      <fieldset>
+        <legend>Saluation</legend>
+        <label><input type="radio" id="mr" value="mr" name="saluation">Mr</label>
+        <label><input type="radio" id="mrs" value="mrs" name="saluation">Mrs</label>
+        <label><input type="radio" id="ms" value="ms" name="saluation">Ms</label>
+        <label><input type="radio" id="none" value="none" name="saluation" checked>None</label>
+      </fieldset><br>
+
+     <!-- datalist elements allow you to specify some values, but also allow them to type any value
+          they'd like. the list="organization-title" and id="organization-title" need to match for this to
+          work properly. The id="title" should be different than the id of the datalist.
+      -->
+      <label for="organization-title">Job Title</label>
+      <input list="organization-title" id="title" name="title" value="Manager">
+      <datalist id="organization-title">
+        <option value="Manager">
+        <option value="Product Manager">
+        <option value="Engineer">
+        <option value="Marketing Manager">
+        <option value="Support Operations">
+      </datalist><br><br>
+
+      <!-- type="date" is a control for entering a date (year, month, and day, with no time). -->
+      <label for="date">What day should we contact you?</label>
+      <input type="date" id="date" name="date" value="2019-01-09"><br><br>
+
+      <!-- type="time" is a control for entering a time value with no time zone. -->
+      <label for="time">What's the best time to contact you?</label>
+      <input type="time" id="time" name="time" value="04:02"><br><br>
+
+      <!-- type="url" is a field for entering a URL. example.com is a good placeholder for urls and emails -->
+      <label for="url">What website can we help you with?</label>
+      <input type="url" id="url" name="url" value="https://example.com"><br><br>
+
+      <!-- You can use a select element for the same purpose as a radio, for larger lists
+        this is generally considered the better choice. You can use the 'selected'
+        attribute to default a value when the form is loaded.
+      -->
+      <label for="country">Country</label>
+      <select name="country">
+        <option value="">Country...</option>
+        <option value="BT">Bhutan</option>
+        <option value="BL">Bonaire</option>
+        <option value="BR">Brazil</option>
+        <option value="CA">Canada</option>
+        <option value="KY">Cayman Islands</option>
+        <option value="CL">Chile</option>
+        <option value="CN">China</option>
+        <option value="FJ">Fiji</option>
+        <option value="FI">Finland</option>
+        <option value="FR">France</option>
+        <option value="DE">Germany</option>
+        <option value="GB">Great Britain</option>
+        <option value="GR">Greece</option>
+        <option value="IN">India</option>
+        <option value="IT">Italy</option>
+        <option value="JP">Japan</option>
+        <option value="NZ">New Zealand</option>
+        <option value="TW">Taiwan</option>
+        <option value="GB">United Kingdom</option>
+        <option value="US" selected="selected">United States of America</option>
+      </select><br><br>
+
+      <!-- type="number" is a control for entering a number. -->
+      <label for="number">What is the overall budget for this project?</label>
+      <input type="number" id="number" name="number" value="100"><br><br>
+
+      <!-- 
+           You can allow multiple selected values to the same name by adding a [] to the end of the name
+      -->
+      <fieldset value="help_ux">
+        <legend>Check all that apply</legend>
+        <label><input type="checkbox" name="help_needs[]" value="help_ux">UX Design</label><br>
+        <label><input type="checkbox" name="help_needs[]" value="help_business">Business Process Design</label><br>
+        <label><input type="checkbox" name="help_needs[]" value="help_backend" checked="checked">Backend Server</label><br>
+        <label><input type="checkbox" name="help_needs[]" value="help_all">Full Product Developement</label><br>
+      </fieldset><br>
+
+      <!-- type="month" is a control for entering a month and year, with no time zone. -->
+      <label for="month">Approximately when will this project be due?</label>
+      <input type="month" id="month" name="month" value="2019-01"><br><br>
+
+      <!-- type="color" is a control for specifying a color. It will return the html hex color value -->
+      <!-- <label for="color">What is the color theme for this project?</label>
+      <input type="color" id="color" name="color" value="#b9ac43"><br><br> -->
+
+      <!-- type="range" is a control for entering a number whose exact value is not important.
+           It displays a simple slider to allow the user to choose.
+      -->
+      <!-- <label for="range">How likely is it that you would recommend us to a friend or colleague?</label>
+      <input type="range" id="range" name="range" min="0" max="10" value="3"><br><br> -->
+
+
+    <button type="submit">Submit</button>
+    <button type="reset">Clear Values</button>
+  </form>
+
+
+</body>
+
+</html>

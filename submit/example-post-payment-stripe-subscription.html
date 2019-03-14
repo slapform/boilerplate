@@ -1,0 +1,144 @@
+---
+layout: null
+permalink: /example-post-payment-stripe-subscription/
+title:
+description:
+sitemap:
+  priority: 0.1
+  exclude: true
+pageVarTest: "test {{asd}}"
+---
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+  <h3>Sample Form Template</h3>
+  <br>
+
+
+  <form id="payment-form" accept-charset="UTF-8" action='http://localhost:5001/slapform/us-central1/submissionProcessHTTPS/ian.wiedenman@gmail.com?slap_debug=false' method="POST" target="_blank" class="container">
+
+  <div class="form-row">
+    <label for="card-element">
+      Credit or debit card
+    </label>
+    <div id="card-element">
+      <!-- A Stripe Element will be inserted here. -->
+    </div>
+
+    <!-- Used to display Element errors. -->
+    <div id="card-errors" role="alert"></div>
+  </div>
+
+
+    <!-- type="email" a field for editing an e-mail address. -->
+    <label for="email">Email</label>
+    <input type="email" id="" name="email" value="john@example.com"><br><br>
+
+    <fieldset>
+      <legend>Payment</legend>
+      <label><input type="radio" id="" value="stripe" name="slap_payment_processor" checked>Credit/Debit Card (Stripe)</label>
+      <!-- <label><input type="radio" id="paypal" value="paypal" name="slap_payment_processor">PayPal</label> -->
+      <!-- <label><input type="radio" id="none" value="none" name="saluation" checked>None</label> -->
+    </fieldset><br>
+
+    <label for="number">Payment Price</label>
+    <input type="text" id="" name="slap_payment_amount" value="14.95"><br><br>
+
+    <label for="number">Payment Type</label>
+    <input type="text" id="" name="slap_payment_type" value="subscription"><br><br>
+
+    <label for="number">Payment Currency</label>
+    <input type="text" id="" name="slap_payment_currency" value="usd"><br><br>
+
+    <label for="number">slap_payment_customer_email</label>
+    <input type="text" id="" name="slap_payment_customer_email" value="email"><br><br>
+
+    <label for="number">slap_payment_stripe_subscription_plan_id</label>
+    <input type="text" id="" name="slap_payment_stripe_subscription_plan_id" value=""><br><br>
+
+    <label for="number">slap_payment_stripe_subscription_plan_id_append_price</label>
+    <input type="text" id="" name="slap_payment_stripe_subscription_plan_id_append_price" value="true"><br><br>
+
+    <label for="number">slap_payment_environment</label>
+    <input type="text" id="" name="slap_payment_environment" value="sandbox"><br><br>
+
+    <label for="name">slap_webhook</label>
+    <input type="text" id="" name="slap_webhook" value="https://hooks.zapier.com/hooks/catch/230940/xq1d6r/"><br><br>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Clear Values</button>
+  </form>
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <script type="text/javascript">
+    /* Step 1: Set up Stripe Elements */
+    var stripe = Stripe('pk_test_Q4ksErphRClek76TrgNxovj9');
+    var elements = stripe.elements();
+
+    /* Step 2: Create your payment form */
+    // Custom styling can be passed to options when creating an Element.
+    var style = {
+      base: {
+        // Add your base input styles here. For example:
+        fontSize: '16px',
+        color: "#32325d",
+      }
+    };
+
+    // Create an instance of the card Element.
+    var card = elements.create('card', {style: style});
+
+    // Add an instance of the card Element into the `card-element` <div>.
+    card.mount('#card-element');
+
+    card.addEventListener('change', function(event) {
+      var displayError = document.getElementById('card-errors');
+      if (event.error) {
+        displayError.textContent = event.error.message;
+      } else {
+        displayError.textContent = '';
+      }
+    });
+
+
+    /* Step 3: Create a token to securely transmit card information */
+    // Create a token or display an error when the form is submitted.
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      stripe.createToken(card).then(function(result) {
+        if (result.error) {
+          // Inform the customer that there was an error.
+          var errorElement = document.getElementById('card-errors');
+          errorElement.textContent = result.error.message;
+        } else {
+          // Send the token to your server.
+          stripeTokenHandler(result.token);
+        }
+      });
+    });
+
+    /* Step 4: Submit the token and the rest of your form to your server */
+    function stripeTokenHandler(token) {
+      // Insert the token ID into the form so it gets submitted to the server
+      var form = document.getElementById('payment-form');
+      var hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'stripeToken');
+      hiddenInput.setAttribute('value', token.id);
+      form.appendChild(hiddenInput);
+
+      // Submit the form
+      form.submit();
+    }
+
+  </script>
+
+
+</body>
+
+</html>
